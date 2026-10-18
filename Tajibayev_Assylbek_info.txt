@@ -1,0 +1,5 @@
+Name: Assylbek
+Surname: Tajibayev
+Group: IT2-2310
+Student ID: 38288
+Course: DevOps
