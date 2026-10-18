@@ -1,6 +1,6 @@
 FROM jenkins/jenkins:lts-jdk21
 USER root
-RUN apt-get update && apt-get install -y --no-install-recommends python3 docker.io procps && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends python3 docker-cli procps && rm -rf /var/lib/apt/lists/*
 RUN jenkins-plugin-cli --plugins workflow-aggregator git pipeline-stage-view timestamper
 COPY init.groovy.d/ /usr/share/jenkins/ref/init.groovy.d/
 USER jenkins
