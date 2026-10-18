@@ -4,6 +4,7 @@ import hudson.security.FullControlOnceLoggedInAuthorizationStrategy
 import org.jenkinsci.plugins.workflow.job.WorkflowJob
 import org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition
 import hudson.plugins.git.GitSCM
+import hudson.plugins.git.BranchSpec
 
 def instance = Jenkins.get()
 def realm = new HudsonPrivateSecurityRealm(false)
@@ -17,6 +18,7 @@ instance.setSystemMessage('DevOps laboratory - Assylbek Tajibayev - IT2-2310 - 3
 def job = instance.getItem('Tajibayev_Assylbek_DevOps')
 if (job == null) job = instance.createProject(WorkflowJob, 'Tajibayev_Assylbek_DevOps')
 def scm = new GitSCM('https://github.com/asylbektajibayev-max/tajibayev-assylbek-devops.git')
+scm.setBranches([new BranchSpec('*/main')])
 def definition = new CpsScmFlowDefinition(scm, 'Jenkinsfile')
 definition.setLightweight(true)
 job.setDefinition(definition)
