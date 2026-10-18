@@ -1,0 +1,21 @@
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    image: tajibayev-assylbek-jenkins:local
+    container_name: tajibayev-assylbek-jenkins
+    # This local lab agent needs Docker access. The socket grants host engine access.
+    user: "0:0"
+    ports:
+      - "127.0.0.1:8096:8080"
+    environment:
+      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD:?Set password in infra/.env}
+      TZ: Asia/Bishkek
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+volumes:
+  jenkins_home:
