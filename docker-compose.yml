@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    image: tajibayev-assylbek-devops:latest
+    container_name: tajibayev-assylbek-container
+    ports:
+      - "127.0.0.1:8086:8000"
+    environment:
+      STUDENT_NAME: ${STUDENT_NAME:-Assylbek}
+      STUDENT_SURNAME: ${STUDENT_SURNAME:-Tajibayev}
+      STUDENT_GROUP: ${STUDENT_GROUP:-IT2-2310}
+      STUDENT_ID: ${STUDENT_ID:-38288}
+    restart: unless-stopped

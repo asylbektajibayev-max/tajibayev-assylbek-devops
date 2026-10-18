@@ -1,0 +1,9 @@
+.git
+.env
+backup
+logs
+evidence
+output
+infra
+private.txt
+**/__pycache__
